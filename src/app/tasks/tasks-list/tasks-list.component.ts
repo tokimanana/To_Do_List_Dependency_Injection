@@ -12,22 +12,23 @@ import { TasksServiceToken } from '../../app.module';
 })
 export class TasksListComponent {
   private TasksService = inject(TasksServiceToken);
-  private selectedFilter = signal<string>('all');
+  // private selectedFilter = signal<string>('all');
+  private selectedFilter: string = 'all';
   tasksStatusOptions = inject(TASK_STATUS_OPTIONS);
-  tasks = computed(() => {
-    switch (this.selectedFilter()) {
+  get tasks () {
+    switch (this.selectedFilter) {
       case 'open':
-        return this.TasksService.allTasks().filter((task) => task.status === 'OPEN');
+        return this.TasksService.allTasks.filter((task) => task.status === 'OPEN');
       case 'in-progress':
-        return this.TasksService.allTasks().filter((task) => task.status === 'IN_PROGRESS');
+        return this.TasksService.allTasks.filter((task) => task.status === 'IN_PROGRESS');
       case 'done':
-        return this.TasksService.allTasks().filter((task) => task.status === 'DONE');
+        return this.TasksService.allTasks.filter((task) => task.status === 'DONE');
       default:
-        return this.TasksService.allTasks();
+        return this.TasksService.allTasks;
     }
-  })
+  };
 
   onChangeTasksFilter(filter: string) {
-    this.selectedFilter.set(filter);
+    this.selectedFilter = filter;
   }
 }
