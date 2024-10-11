@@ -1,15 +1,13 @@
 import { TASK_STATUS_OPTIONS, TaskStatusOption } from './../../task.model';
 import { Component, computed, inject, input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
 
 import { Task, TaskStatus } from '../../task.model';
-import { TasksService } from '../../tasks.service';
-import { TasksServiceToken } from '../../../../main';
+import { TasksServiceToken } from '../../../app.module';
+
 
 @Component({
   selector: 'app-task-item',
-  standalone: true,
-  imports: [FormsModule],
   templateUrl: './task-item.component.html',
   styleUrl: './task-item.component.css',
 })

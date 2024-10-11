@@ -1,16 +1,13 @@
-import { TasksService } from './../tasks.service';
 import { Component, computed, inject, signal } from '@angular/core';
 
-import { TaskItemComponent } from './task-item/task-item.component';
-import { TasksServiceToken } from '../../../main';
+
 import { TASK_STATUS_OPTIONS, tasksStatusOptionProvider } from '../task.model';
+import { TasksServiceToken } from '../../app.module';
 
 @Component({
   selector: 'app-tasks-list',
-  standalone: true,
   templateUrl: './tasks-list.component.html',
   styleUrl: './tasks-list.component.css',
-  imports: [TaskItemComponent],
   providers: [tasksStatusOptionProvider],
 })
 export class TasksListComponent {
